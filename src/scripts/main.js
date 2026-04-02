@@ -15,18 +15,17 @@ function totalSumOfPopulation(piople) {
   return totalSumPopulation;
 }
 
-function getAvaragePopulation(piople) {
-  let averageSumPopulation = 0;
-
-  piople.map((el) => {
-    averageSumPopulation += Number(el.replace(/,/g, ''));
-  });
-
-  return Math.floor(averageSumPopulation / piople.length);
+function getAvaragePopulation(piople, total) {
+  return Math.floor(total / piople.length);
 }
 
+const totalSum = totalSumOfPopulation(population);
+
 document.querySelector('.total-population').textContent =
-  totalSumOfPopulation(population);
+  totalSum.toLocaleString('en-US');
+
+const avarageSum = getAvaragePopulation(population, totalSum);
 
 document.querySelector('.average-population').textContent =
-  getAvaragePopulation(population);
+  avarageSum.toLocaleString('en-US');
+getAvaragePopulation(population, totalSumOfPopulation);
